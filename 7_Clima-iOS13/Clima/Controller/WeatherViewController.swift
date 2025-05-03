@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreLocation
-
+//test
 class WeatherViewController: UIViewController {
 
     @IBOutlet weak var conditionImageView: UIImageView!
