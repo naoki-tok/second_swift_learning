@@ -16,6 +16,8 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var searchField: UITextField!
     @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var goToSecondView: UIButton!
+    
     
     //MARK: Properties
     var weatherManager = WeatherDataManager()
@@ -28,6 +30,12 @@ class WeatherViewController: UIViewController {
         weatherManager.delegate = self
         searchField.delegate = self
     }
+    
+    @IBAction func goToSecondView(_ sender: UIButton) {
+        let secondVC = SecondViewController(nibName: "SecondView", bundle: nil)
+           navigationController?.pushViewController(secondVC, animated: true)
+    }
+    
 
 
 }
