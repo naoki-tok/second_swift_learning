@@ -15,7 +15,7 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var searchField: UITextField!
-    
+    @IBOutlet weak var backgroundImageView: UIImageView!
     
     //MARK: Properties
     var weatherManager = WeatherDataManager()
@@ -40,6 +40,13 @@ extension WeatherViewController: UITextFieldDelegate {
             print(searchField.text!)
             
             searchWeather()
+            
+            //入力がTokyoなら背景を変更
+            if searchField.text == "Tokyo"{
+                updateBackgroundForTokyo()
+            }else {
+                updateBackgroundDefault()
+            }
         }
     
         func searchWeather(){
@@ -72,6 +79,14 @@ extension WeatherViewController: UITextFieldDelegate {
         func textFieldDidEndEditing(_ textField: UITextField) {
     //        searchField.text = ""   // clear textField
         }
+    
+        func updateBackgroundForTokyo(){
+        backgroundImageView.image = UIImage(named: "tokyo_background")
+        }
+    
+    func updateBackgroundDefault(){
+        backgroundImageView.image = UIImage(named: "background")
+    }
 }
 
 //MARK:- View update extension
