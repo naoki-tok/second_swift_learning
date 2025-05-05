@@ -36,17 +36,20 @@ class WeatherViewController: UIViewController {
 extension WeatherViewController: UITextFieldDelegate {
     
         @IBAction func searchBtnClicked(_ sender: UIButton) {
-            searchField.endEditing(true)    //dismiss keyboard
-            print(searchField.text!)
+            searchField.endEditing(true)    // キーボードを閉じる
+                searchWeather()
+
+                // コンソールに検索アクションと都市名を出力
+                if let city = searchField.text {
+                    print("action: search, city: \(city)")
+                    
+                    if city == "Tokyo" {
+                        updateBackgroundForTokyo()
+                    } else {
+                        updateBackgroundDefault()
+                    }
+                }
             
-            searchWeather()
-            
-            //入力がTokyoなら背景を変更
-            if searchField.text == "Tokyo"{
-                updateBackgroundForTokyo()
-            }else {
-                updateBackgroundDefault()
-            }
         }
     
         func searchWeather(){
