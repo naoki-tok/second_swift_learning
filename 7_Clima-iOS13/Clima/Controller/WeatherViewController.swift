@@ -17,7 +17,8 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var searchField: UITextField!
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var goToSecondView: UIButton!
-    
+    @IBOutlet weak var dadJokeButton: UIButton!
+    @IBOutlet weak var jokeLabel: UILabel!
     
     //MARK: Properties
     var weatherManager = WeatherDataManager()
@@ -29,6 +30,10 @@ class WeatherViewController: UIViewController {
         locationManager.delegate = self
         weatherManager.delegate = self
         searchField.delegate = self
+        goToSecondView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        dadJokeButton.translatesAutoresizingMaskIntoConstraints = false
+        dadJokeButton.widthAnchor.constraint(equalToConstant: 120).isActive = true
+        
     }
     
     @IBAction func goToSecondView(_ sender: UIButton) {
@@ -36,9 +41,46 @@ class WeatherViewController: UIViewController {
            navigationController?.pushViewController(secondVC, animated: true)
     }
     
+    
+    @IBAction func fetchDadJoke(_ sender: UIButton) {
+        getDadJoke()
+    }
+    
+    func getDadJoke(){
+        let url = URL(string: "https://icanhazdadjoke.com/")!
+        var request = URLRequest(url: url)
+        request.setValue("application/json", forHTTPHeaderField: "Accept") // JSON形式で取得
+
+        let sessionConfig = URLSessionConfiguration.default
+        sessionConfig.timeoutIntervalForRequest = 20  // タイムアウトを20秒に変更
+        sessionConfig.timeoutIntervalForResource = 40
+        sessionConfig.waitsForConnectivity = true // 接続待機を有効化
+
+        let session = URLSession(configuration: sessionConfig)
+
+        session.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("Error:", error.localizedDescription)
+                return
+            }
+
+            if let data = data, let jokeResponse = try? JSONDecoder().decode(DadJoke.self, from: data) {
+                DispatchQueue.main.async {
+                    self.jokeLabel.text = jokeResponse.joke
+                }
+            }
+        }.resume()
+
+    }
+
 
 
 }
+
+struct DadJoke: Decodable {
+    let joke: String
+}
+
  
 //MARK:- TextField extension
 extension WeatherViewController: UITextFieldDelegate {
