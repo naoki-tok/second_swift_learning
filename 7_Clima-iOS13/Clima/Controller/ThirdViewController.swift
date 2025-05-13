@@ -7,6 +7,7 @@ class ThirdViewController: UIViewController, WeatherManagerDelegate {  // ✅ De
 
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var conditionImageView: UIImageView!
+    @IBOutlet weak var cityLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,6 +16,7 @@ class ThirdViewController: UIViewController, WeatherManagerDelegate {  // ✅ De
         weatherManager.delegate = self  // ✅ WeatherManagerのDelegateをセット
 
         if let cityName = cityName {
+            cityLabel.text = cityName 
             fetchWeather(for: cityName)  // ✅ 天気データを取得
         }
     }
