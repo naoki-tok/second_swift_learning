@@ -8,11 +8,11 @@ struct Rail {
 }
 
 // ✅ 路線データの定義
-private let headerArray: [String] = ["山手線", "東横線", "田園都市線", "常磐線"]
-private let yamanoteArray: [String] = ["渋谷", "新宿", "池袋"]
-private let toyokoArray: [String] = ["自由ヶ丘", "日吉"]
-private let dentoArray: [String] = ["溝の口", "二子玉川"]
-private let jobanArray: [String] = ["上野"]
+private let headerArray: [String] = ["EU", "アジア", "オセアニア", "アフリカ"]
+private let yamanoteArray: [String] = ["ベルリン", "アムステルダム", "ロンドン"]
+private let toyokoArray: [String] = ["東京", "バンコク"]
+private let dentoArray: [String] = ["シドニー", "メルボルン"]
+private let jobanArray: [String] = ["ケープタウン"]
 
 class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -80,6 +80,18 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.reloadSections([section], with: .automatic)
         tableView.endUpdates()
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cityName = courseArray[indexPath.section].stationArray[indexPath.row]  // ✅ タップした都市名を取得
+
+        let thirdVC = ThirdViewController()  // ✅ `ThirdViewController` のインスタンスを作成
+        thirdVC.cityName = cityName  // ✅ 都市名をセット
+
+        navigationController?.pushViewController(thirdVC, animated: true)  // ✅ 画面遷移
+    }
+
+
+
 }
 
 
