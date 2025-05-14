@@ -39,41 +39,30 @@ class WeatherViewController: UIViewController {
            navigationController?.pushViewController(secondVC, animated: true)
     }
     
-    
+
+
+        var dadJokeManager = DadJokeManager()  // ✅ `DadJokeManager` のインスタンスを作成
+        
     @IBAction func fetchDadJoke(_ sender: UIButton) {
-        getDadJoke()
+        print("Dad Joke API呼び出し中...")
+        dadJokeManager.fetchDadJoke { result in
+                   DispatchQueue.main.async {
+                       switch result {
+                       case .success(let jokeData):
+                           self.jokeLabel.text = jokeData.joke  // ✅ ジョークをラベルに表示
+                       case .failure(let error):
+                           print("❌ ジョーク取得エラー:", error.localizedDescription)
+                       }
+                   }
+               }
     }
     
-    func getDadJoke(){
-        let url = URL(string: "https://icanhazdadjoke.com/")!
-        var request = URLRequest(url: url)
-        request.setValue("application/json", forHTTPHeaderField: "Accept") // JSON形式で取得
-
-        let sessionConfig = URLSessionConfiguration.default
-        sessionConfig.timeoutIntervalForRequest = 20  // タイムアウトを20秒に変更
-        sessionConfig.timeoutIntervalForResource = 40
-        sessionConfig.waitsForConnectivity = true // 接続待機を有効化
-
-        let session = URLSession(configuration: sessionConfig)
-
-        session.dataTask(with: request) { data, response, error in
-            if let error = error {
-                print("Error:", error.localizedDescription)
-                return
-            }
-
-            if let data = data, let jokeResponse = try? JSONDecoder().decode(DadJoke.self, from: data) {
-                DispatchQueue.main.async {
-                    self.jokeLabel.text = jokeResponse.joke
-                }
-            }
-        }.resume()
+    
 
     }
 
 
 
-}
 
 struct DadJoke: Decodable {
     let joke: String
@@ -177,3 +166,4 @@ extension WeatherViewController: CLLocationManagerDelegate {
         print(error)
     }
 }
+

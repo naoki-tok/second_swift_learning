@@ -2,7 +2,7 @@ import UIKit
 
 class ThirdViewController: UIViewController, WeatherManagerDelegate {  // ✅ Delegateを追加
 
-    var cityName: String?  // ✅ 都市名を受け取る変数
+    var cityName: String?
     var weatherManager = WeatherDataManager()
 
     @IBOutlet weak var temperatureLabel: UILabel!
@@ -16,25 +16,25 @@ class ThirdViewController: UIViewController, WeatherManagerDelegate {  // ✅ De
         weatherManager.delegate = self  // ✅ WeatherManagerのDelegateをセット
 
         if let cityName = cityName {
-            cityLabel.text = cityName 
-            fetchWeather(for: cityName)  // ✅ 天気データを取得
+            cityLabel.text = cityName
+            fetchWeather(for: cityName)
         }
     }
 
-    // ✅ 天気データを取得する関数
+    // ✅ APIを使って天気を取得
     func fetchWeather(for city: String) {
         weatherManager.fetchWeather(city)
     }
 
-    // ✅ 天気情報を更新する（WeatherManagerDelegateのメソッド）
+    // ✅ 天気情報をUIに表示（WeatherManagerDelegateのメソッド）
     func updateWeather(weatherModel: WeatherModel) {
         DispatchQueue.main.async {
-            self.temperatureLabel.text = weatherModel.temperatureString  // ✅ 天気情報をUIにセット
+            self.temperatureLabel.text = weatherModel.temperatureString
             self.conditionImageView.image = UIImage(systemName: weatherModel.conditionName)
         }
     }
 
     func failedWithError(error: Error) {
-        print("Error fetching weather:", error)
+        print("❌ APIエラー:", error.localizedDescription)
     }
 }

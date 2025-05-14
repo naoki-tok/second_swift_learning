@@ -25,7 +25,7 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         // ✅ データを初期化
         courseArray = [
-            Rail(isShown: true, railName: headerArray[0], stationArray: yamanoteArray),
+            Rail(isShown: false, railName: headerArray[0], stationArray: yamanoteArray),
             Rail(isShown: false, railName: headerArray[1], stationArray: toyokoArray),
             Rail(isShown: false, railName: headerArray[2], stationArray: dentoArray),
             Rail(isShown: false, railName: headerArray[3], stationArray: jobanArray)
