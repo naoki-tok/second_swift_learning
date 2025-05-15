@@ -34,7 +34,7 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.delegate = self
         tableView.dataSource = self
         
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: R.reuseIdentifier.cell.identifier)
     }
 
     // ✅ セクション数

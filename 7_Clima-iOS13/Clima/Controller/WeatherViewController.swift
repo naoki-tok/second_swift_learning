@@ -20,6 +20,7 @@ class WeatherViewController: UIViewController {
     
     //MARK: Properties
     var weatherManager = WeatherDataManager()
+    var dadJokeManager = DadJokeManager()  // ✅ `DadJokeManager` のインスタンスを作成
     let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
@@ -35,13 +36,13 @@ class WeatherViewController: UIViewController {
     }
     
     @IBAction func goToSecondView(_ sender: UIButton) {
-        let secondVC = SecondViewController(nibName: "SecondView", bundle: nil)
+        let secondVC = SecondViewController(nibName: R.nib.secondView.name, bundle: nil)
            navigationController?.pushViewController(secondVC, animated: true)
     }
     
 
 
-        var dadJokeManager = DadJokeManager()  // ✅ `DadJokeManager` のインスタンスを作成
+        
         
     @IBAction func fetchDadJoke(_ sender: UIButton) {
         print("Dad Joke API呼び出し中...")
@@ -121,21 +122,21 @@ extension WeatherViewController: UITextFieldDelegate {
         }
     
         func updateBackgroundForTokyo(){
-        backgroundImageView.image = UIImage(named: "tokyo_background")
+        backgroundImageView.image = R.image.tokyo_background()  // ✅ R.Swift に変更！
         }
-    
-    func updateBackgroundDefault(){
-        backgroundImageView.image = UIImage(named: "background")
-    }
+
+        func updateBackgroundDefault(){
+        backgroundImageView.image = R.image.background()  // ✅ R.Swift に変更！
+        }
 }
 
 //MARK:- View update extension
 extension WeatherViewController: WeatherManagerDelegate {
     
     func updateWeather(weatherModel: WeatherModel){
-        DispatchQueue.main.sync {
-            temperatureLabel.text = weatherModel.temperatureString
-            cityLabel.text = weatherModel.cityName
+        DispatchQueue.main.async {
+            self.temperatureLabel.text = weatherModel.temperatureString
+            self.cityLabel.text = weatherModel.cityName
             self.conditionImageView.image = UIImage(systemName: weatherModel.conditionName)
         }
     }

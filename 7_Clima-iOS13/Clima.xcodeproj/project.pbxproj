@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,7 @@
 		0468CD862DD38E1A00F726D7 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468CD832DD38E1A00F726D7 /* ThirdViewController.swift */; };
 		0468CD882DD4259500F726D7 /* APIclient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468CD872DD4259400F726D7 /* APIclient.swift */; };
 		0468CD8A2DD427EC00F726D7 /* DadJoke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468CD892DD427EC00F726D7 /* DadJoke.swift */; };
+		0468CD8D2DD613B500F726D7 /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 0468CD8C2DD613B500F726D7 /* RswiftLibrary */; };
 		7D64259624473AE800F1DD90 /* WeatherDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D64259524473AE800F1DD90 /* WeatherDataManager.swift */; };
 		7D6425982451AEA500F1DD90 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6425972451AEA500F1DD90 /* WeatherData.swift */; };
 		7DB97A2C24585AB800C3BB03 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB97A2B24585AB800C3BB03 /* WeatherModel.swift */; };
@@ -55,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0468CD8D2DD613B500F726D7 /* RswiftLibrary in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,6 +136,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ADAA27C1231BBFB300365194 /* Build configuration list for PBXNativeTarget "Clima" */;
 			buildPhases = (
+				0468CD8E2DD614B300F726D7 /* Run Script */,
 				ADAA27A9231BBFAF00365194 /* Sources */,
 				ADAA27AA231BBFAF00365194 /* Frameworks */,
 				ADAA27AB231BBFAF00365194 /* Resources */,
@@ -141,6 +144,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				0468CD902DD61E5900F726D7 /* PBXTargetDependency */,
 			);
 			name = Clima;
 			productName = Clima;
@@ -171,6 +175,9 @@
 				Base,
 			);
 			mainGroup = ADAA27A4231BBFAF00365194;
+			packageReferences = (
+				0468CD8B2DD613B500F726D7 /* XCRemoteSwiftPackageReference "R" */,
+			);
 			productRefGroup = ADAA27AE231BBFAF00365194 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -198,6 +205,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0468CD8E2DD614B300F726D7 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		ADAA27A9231BBFAF00365194 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -217,6 +245,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0468CD902DD61E5900F726D7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 0468CD8F2DD61E5900F726D7 /* RswiftGeneratePublicResources */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		ADAA27B6231BBFAF00365194 /* Main.storyboard */ = {
@@ -410,6 +445,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0468CD8B2DD613B500F726D7 /* XCRemoteSwiftPackageReference "R" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mac-cain13/R.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.8.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0468CD8C2DD613B500F726D7 /* RswiftLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0468CD8B2DD613B500F726D7 /* XCRemoteSwiftPackageReference "R" */;
+			productName = RswiftLibrary;
+		};
+		0468CD8F2DD61E5900F726D7 /* RswiftGeneratePublicResources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0468CD8B2DD613B500F726D7 /* XCRemoteSwiftPackageReference "R" */;
+			productName = "plugin:RswiftGeneratePublicResources";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = ADAA27A5231BBFAF00365194 /* Project object */;
 }
