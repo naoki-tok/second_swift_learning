@@ -6,8 +6,14 @@
 
 import UIKit
 import CoreLocation
+import FirebaseCore
+
+
+
 
 class WeatherViewController: UIViewController {
+    
+
 
     @IBOutlet weak var conditionImageView: UIImageView!
     @IBOutlet weak var temperatureLabel: UILabel!

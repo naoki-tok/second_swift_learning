@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040E04B12DD9FF110049C091 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 040E04B02DD9FF110049C091 /* GoogleService-Info.plist */; };
+		040E04B82DDA09FF0049C091 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 040E04B72DDA09FF0049C091 /* FirebaseCore */; };
 		042613812DC8E09000F8A936 /* SecondView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042613802DC8E09000F8A936 /* SecondView.xib */; };
 		042613832DC8E0E600F8A936 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042613822DC8E0E600F8A936 /* SecondViewController.swift */; };
 		0468CD852DD38E1A00F726D7 /* ThirdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0468CD842DD38E1A00F726D7 /* ThirdViewController.xib */; };
@@ -29,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		040E04B02DD9FF110049C091 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		042613802DC8E09000F8A936 /* SecondView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecondView.xib; sourceTree = "<group>"; };
 		042613822DC8E0E600F8A936 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		0468CD832DD38E1A00F726D7 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				040E04B82DDA09FF0049C091 /* FirebaseCore in Frameworks */,
 				0468CD8D2DD613B500F726D7 /* RswiftLibrary in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -63,11 +67,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		040E04B62DDA09FF0049C091 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		ADAA27A4231BBFAF00365194 = {
 			isa = PBXGroup;
 			children = (
 				ADAA27CD231BC87F00365194 /* README.md */,
 				ADAA27AF231BBFAF00365194 /* Clima */,
+				040E04B62DDA09FF0049C091 /* Frameworks */,
 				ADAA27AE231BBFAF00365194 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -93,6 +105,7 @@
 				ADAA27BE231BBFB300365194 /* Info.plist */,
 				ADAA27C5231BC02B00365194 /* dark_background.pdf */,
 				ADAA27C4231BC02B00365194 /* light_background.pdf */,
+				040E04B02DD9FF110049C091 /* GoogleService-Info.plist */,
 			);
 			path = Clima;
 			sourceTree = "<group>";
@@ -177,6 +190,7 @@
 			mainGroup = ADAA27A4231BBFAF00365194;
 			packageReferences = (
 				0468CD8B2DD613B500F726D7 /* XCRemoteSwiftPackageReference "R" */,
+				040E04B32DDA00AC0049C091 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = ADAA27AE231BBFAF00365194 /* Products */;
 			projectDirPath = "";
@@ -194,6 +208,7 @@
 			files = (
 				ADAA27CE231BC87F00365194 /* README.md in Resources */,
 				ADAA27C7231BC02C00365194 /* dark_background.pdf in Resources */,
+				040E04B12DD9FF110049C091 /* GoogleService-Info.plist in Resources */,
 				0468CD852DD38E1A00F726D7 /* ThirdViewController.xib in Resources */,
 				ADAA27BD231BBFB300365194 /* LaunchScreen.storyboard in Resources */,
 				ADAA27BA231BBFB300365194 /* Assets.xcassets in Resources */,
@@ -447,6 +462,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		040E04B32DDA00AC0049C091 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.12.0;
+			};
+		};
 		0468CD8B2DD613B500F726D7 /* XCRemoteSwiftPackageReference "R" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mac-cain13/R.swift";
@@ -458,6 +481,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		040E04B72DDA09FF0049C091 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 040E04B32DDA00AC0049C091 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
 		0468CD8C2DD613B500F726D7 /* RswiftLibrary */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0468CD8B2DD613B500F726D7 /* XCRemoteSwiftPackageReference "R" */;
